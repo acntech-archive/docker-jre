@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+  acntech_jre8:
+    build: .
+    image: acntech/jre:1.8.0_101
+    container_name: acntech-jre8
+    hostname: jre8.acntech.internal
