@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+  acntech_jre:
+    build: .
+    image: acntech/jre:1.8.0_101-alpine
+    container_name: acntech-jre-alpine
+    hostname: jre.acntech.internal
