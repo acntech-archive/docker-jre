@@ -10,11 +10,21 @@ ENV JAVA_HOME /opt/java/default
 ENV PATH $PATH:${JAVA_HOME}/bin
 
 
-RUN apk update && apk upgrade && apk add wget
+RUN apk update && \
+    apk upgrade && \
+    apk add wget
 
-RUN wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" ${JRE_URL} -O /tmp/jre.tar.gz
-RUN mkdir -p /opt/java && tar -xzvf /tmp/jre.tar.gz -C /opt/java/ && ln -s /opt/java/${JRE_DIR}/ ${JAVA_HOME} && rm -f /tmp/jre.tar.gz
+RUN wget --no-cookies \
+         --no-check-certificate \
+         --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+         ${JRE_URL} \
+         -O /tmp/jre.tar.gz
+
+RUN mkdir -p /opt/java && \
+    tar -xzvf /tmp/jre.tar.gz -C /opt/java/ && \
+    cd /opt/java && \
+    ln -s ${JRE_DIR}/ default && \
+    rm -f /tmp/jre.tar.gz
 
 
-#CMD ["java -version"]
 CMD ["/bin/bash"]

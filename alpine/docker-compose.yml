@@ -4,5 +4,5 @@ services:
   acntech_jre:
     build: .
     image: acntech/jre:1.8.0_101-alpine
-    container_name: acntech-jre-alpine
+    container_name: acntech-jre
     hostname: jre.acntech.internal
