@@ -3,6 +3,6 @@ version: "2"
 services:
   acntech_jre:
     build: .
-    image: acntech/jre:1.8.0_101
+    image: acntech/jre:latest
     container_name: acntech-jre
     hostname: jre.acntech.internal
