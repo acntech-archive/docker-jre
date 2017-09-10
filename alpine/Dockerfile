@@ -2,8 +2,8 @@ FROM alpine
 MAINTAINER Thomas Johansen "thomas.johansen@accenture.com"
 
 
-ARG JRE_URL=http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jre-8u131-linux-x64.tar.gz
-ARG JRE_DIR=jre1.8.0_131
+ARG JAVA_URL=http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-x64.tar.gz
+ARG JAVA_DIR=jre1.8.0_144
 
 
 ENV JAVA_HOME /opt/java/default
@@ -18,14 +18,14 @@ RUN apk update && \
 RUN wget --no-cookies \
          --no-check-certificate \
          --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-         ${JRE_URL} \
-         -O /tmp/jre.tar.gz
+         ${JAVA_URL} \
+         -O /tmp/java.tar.gz
 
 RUN mkdir -p /opt/java && \
-    tar -xzvf /tmp/jre.tar.gz -C /opt/java/ && \
+    tar -xzvf /tmp/java.tar.gz -C /opt/java/ && \
     cd /opt/java && \
-    ln -s ${JRE_DIR}/ default && \
-    rm -f /tmp/jre.tar.gz
+    ln -s ${JAVA_DIR}/ default && \
+    rm -f /tmp/java.tar.gz
 
 
-CMD ["/bin/bash"]
+CMD ["java -version"]
