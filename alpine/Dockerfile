@@ -28,4 +28,4 @@ RUN mkdir -p /opt/java && \
     rm -f /tmp/java.tar.gz
 
 
-CMD ["java -version"]
+CMD ["java", "-version"]

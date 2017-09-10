@@ -32,4 +32,4 @@ RUN update-alternatives --install "/usr/bin/java" "java" "${JAVA_HOME}/bin/java"
     update-alternatives --set "java" "${JAVA_HOME}/bin/java"
 
 
-CMD ["java -version"]
+CMD ["java", "-version"]
